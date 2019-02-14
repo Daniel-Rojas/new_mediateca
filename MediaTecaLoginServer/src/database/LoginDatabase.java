@@ -10,7 +10,7 @@ public class LoginDatabase {
 
     public LoginDatabase() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException c) {
             System.out.println("Error: Could not find MySQL Driver");
             System.exit(0);
