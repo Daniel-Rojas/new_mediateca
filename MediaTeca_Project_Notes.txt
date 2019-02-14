@@ -1,0 +1,26 @@
+MediaTeca Project Notes
+
+Components:
+	- MediaTeca Login Server
+	- MediaTeca Media Server
+	- MediaTeca Client
+	- AudioTeca Client
+
+MediaTeca Login Server (console program)
+	- keeps MySQL Database of Users
+		- User: is a register client that has the ability to connect to a Media Server with a passcode
+		- Users can be upgraded to host their own server (information also kept on Database)
+	- All client (Media Server, AudioTeca, and MediaTeca Clients) login to the login server
+		- verify that email is registered and that password matches users password
+			- if client, the login server returns the IP address of the media server with the matching passcode
+			- all response contain {"loginSuccess":"0","username":"<username>","response":"<ip_address>"}
+				- loginSuccess
+					0 = email not registered || incorrect password
+					1 = successful login
+				- response
+					"" = successful login of media server
+					"<ip_address>" = successful login of client; returns ip of media server
+					"Email or Password is Incorrect!" = self explanitory
+				- username
+					"" = unsuccessful login
+					"<username>" = user's username to pass to UI
